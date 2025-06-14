@@ -10,17 +10,12 @@ internal static class Program
     
     public static async Task Main()
     {
-        var token = "";
-        try
+        const string tokenPath = "token.txt";
+        var token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
+        if (token == null)
         {
-            const string tokenPath = "token.txt";
-            token = await File.ReadAllTextAsync(tokenPath);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Failed to read token.txt");
-            Console.WriteLine(e);
-            throw;
+            Console.WriteLine("Cannot get discord bot token.");
+            return;
         }
         
         _client = new DiscordSocketClient();

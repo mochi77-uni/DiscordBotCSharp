@@ -1,0 +1,8 @@
+﻿name: discord-bot-csharp
+service:
+  name: discord-bot-app
+  type: docker
+  docker:
+    image: registry.koyeb.com/yuta17/discord-bot-csharp
+  ports:
+    - port: 80
